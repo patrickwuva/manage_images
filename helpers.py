@@ -1,6 +1,6 @@
 import os
 from google.cloud import storage
-
+import pickle
 def list_files(bucket_name):
     files = []
     client = storage.Client()
@@ -21,7 +21,7 @@ def download_files(bucket_name, file_list):
         blob.download_to_filename(file)
 
 def save_progress(chunk_index):
-    with open('/home/patrickwilliamson/progress.txt', 'w') as file:
+    with open('/home/patrickwilliamson/progress.pkl', 'w') as file:
         file.write(chunk_index)
 
 def get_progess():
@@ -31,3 +31,7 @@ def get_progess():
             return 0
         else:
             return int(chunk)
+        
+def load_images():
+    with open('image_paths.pkl', 'rb') as f:
+        return pickle.load(f)
