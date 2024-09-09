@@ -33,5 +33,5 @@ def get_progess():
             return int(chunk)
         
 def load_images():
-    with open('image_paths.pkl', 'rb') as f:
+    with open('/home/patrickwilliamson/image_paths.pkl', 'rb') as f:
         return pickle.load(f)
