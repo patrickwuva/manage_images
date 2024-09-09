@@ -1,4 +1,5 @@
 import os
+from google.cloud import storage
 
 def list_files(bucket_name):
     files = []
@@ -7,16 +8,26 @@ def list_files(bucket_name):
     blobs = bucket.list_blobs()
     for blob in blobs:
         files.append(blob.name)
-   return files
+    
+    return files
 
 def download_files(bucket_name, file_list):
+    destination_foler = 'home/patrickwilliamson/images'
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
-    os.makedirs('/home/patrickwilliamson/images', exist_ok=True)
 
-    for i, file_name in enumerate(file_list[:limit]):
-        blob = bucket.blob(file_name)
-        destination_file_path = os.path.join('/home/patrickwilliamson/images', file_name)
-        os.makedirs(os.path.dirname(destination_file_path), exist_ok=True)
+    for file in file_list:
+        blob = bucket.blob(file)
+        blob.download_to_filename(file)
 
-        blob.download_to_filename(destination_file_path)
+def save_progress(chunk_index):
+    with open('progress.txt', 'w') as file:
+        file.write(chunk_index)
+
+def get_progess():
+    with open('progress.txt', 'r') as file:
+        chunk = file.read()
+        if chunk is None:
+            return 0
+        else:
+            return int(chunk)
