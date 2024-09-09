@@ -27,7 +27,7 @@ def save_progress(chunk_index):
 def get_progess():
     with open('progress.txt', 'r') as file:
         chunk = file.read()
-        if chunk is None:
+        if chunk is None or chunk == '-1':
             return 0
         else:
             return int(chunk)
