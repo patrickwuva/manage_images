@@ -21,11 +21,11 @@ def download_files(bucket_name, file_list):
         blob.download_to_filename(file)
 
 def save_progress(chunk_index):
-    with open('progress.txt', 'w') as file:
+    with open('/home/patrickwilliamson/progress.txt', 'w') as file:
         file.write(chunk_index)
 
 def get_progess():
-    with open('progress.txt', 'r') as file:
+    with open('/home/patrickwilliamson/progress.txt', 'r') as file:
         chunk = file.read()
         if chunk is None or chunk == '-1':
             return 0
