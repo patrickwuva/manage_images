@@ -58,4 +58,4 @@ def embed_image(file, output_folder=''):
     except Exception as e:
         print(f'error while embedding image: {e}')
     finally:
-        os.remove(f'home/patrickwilliamson/{file}')
+        os.remove(f'{file}')
