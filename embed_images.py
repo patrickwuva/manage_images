@@ -13,7 +13,7 @@ def main():
     image_paths = load_images()
     chunk_size = 25
     with ThreadPoolExecutor(max_workers=3) as executor:
-        futures = [executor.submit(embed_chunk, image_paths[i:i+chunk_size], i//chunk_size) for i in range(0, 25, chunk_size)]
+        futures = [executor.submit(embed_chunk, image_paths[i:i+chunk_size], i//chunk_size) for i in range(0, 100, chunk_size)]
 
         for future in futures:
             print(future.result())
