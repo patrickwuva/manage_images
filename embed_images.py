@@ -5,7 +5,7 @@ import os
 def embed_chunk(image_paths, index):
     for image in image_paths:
         #download_files('offender-images', image_paths)
-        embed_image(image, '/home/patrickwilliamson/embedded/')
+        embed_image(image)
     save_progress(index)
     print(f'done with chunk {index}')
         
