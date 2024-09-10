@@ -4,14 +4,16 @@ import os
 
 def embed_chunk(image_paths, index):
     for image in image_paths:
-        embed_image(image, 'embedded/')
-        save_progress(index)
+        download_files('offender-images', image_paths)
+        #embed_image(image, 'embedded/')
+        #save_progress(index)
         print(f'done with chunk {index}')
+        
 def main():
     image_paths = load_images()
     chunk_size = 25
     with ThreadPoolExecutor(max_workers=3) as executor:
-        futures = [executor.submit(embed_chunk, image_paths[i:i+chunk_size], i//chunk_size) for i in range(0, len(image_paths), chunk_size)]
+        futures = [executor.submit(embed_chunk, image_paths[i:i+chunk_size], i//chunk_size) for i in range(0, 25, chunk_size)]
 
         for future in futures:
             print(future.result())
