@@ -16,7 +16,7 @@ def list_files(bucket_name):
     return files
 
 def download_files(bucket_name, file_list):
-    destination_foler = '/home/patrickwilliamson/images/*'
+    destination_foler = '/home/patrickwilliamson/images'
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
 
@@ -39,7 +39,7 @@ def get_progess():
 def load_images(folder_path=None):
     if folder_path:
         images = []
-        for file in glob.glob(folder_path):
+        for file in glob.glob(f'{folder_path}/*'):
             images.append(file)
         return images
     
