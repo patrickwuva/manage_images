@@ -56,6 +56,7 @@ def embed_image(file, output_folder=''):
             img_path = img_path,
             model_name = 'Facenet512'
         ))
+        output_folder = '/home/patrickwilliamson/embeddings/'
         output = file.split('.')[0].split('/')[-1]
         np.save(f'{output_folder}{output}.npy', embedded_image)
         print(f'embedded {file}')

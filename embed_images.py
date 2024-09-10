@@ -4,21 +4,17 @@ import os
 
 def embed_chunk(image_paths):
     for image in image_paths:
-        # download_files('offender-images', image_paths)  # Commented out for clarity
         embed_image(image)
     
-    # We do not have the chunk index here, handle progress differently if needed
     print(f'done with chunk containing {len(image_paths)} images')
 
 def main():
     image_paths = load_images('/home/patrickwilliamson/tmp/images')
     chunk_size = 25
 
-    # Split the image_paths list into chunks of chunk_size
     chunks = [image_paths[i:i + chunk_size] for i in range(0, len(image_paths), chunk_size)]
 
-    # Create a process pool and map the chunks to be processed in parallel
-    with Pool(processes=3) as pool:  # Using 3 processes, similar to your thread count
+    with Pool(processes=3) as pool:
         pool.map(embed_chunk, chunks)
 
 if __name__ == '__main__':
