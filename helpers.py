@@ -25,7 +25,7 @@ def download_files(bucket_name, file_list):
 
 def save_progress(chunk_index):
     with open('/home/patrickwilliamson/progress.txt', 'w') as file:
-        file.write(chunk_index)
+        file.write(str(chunk_index))
 
 def get_progess():
     with open('/home/patrickwilliamson/progress.txt', 'r') as file:
@@ -42,7 +42,7 @@ def load_images():
 def embed_image(file, output_folder=''):
     try:
         embedded_image = np.array(DeepFace.represent(
-            img_path = file,
+            img_path = f'/home/patrickwilliamson/{file}',
             model_name = 'Facenet512'
         ))
         output = file.split('.')[0].split('/')[-1]
