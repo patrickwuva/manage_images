@@ -2,6 +2,8 @@ from helpers import list_files, download_files, save_progress, get_progess, load
 import deepface
 import os
 
+def embed_images(files):
+
 def main():
 
     image_paths = load_images()
