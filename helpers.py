@@ -48,8 +48,12 @@ def load_images(folder_path=None):
 
 def embed_image(file, output_folder=''):
     try:
+        img_path = file
+        if output_folder != '':
+            img_path = f'/home/patrickwilliamson/{file}'
         embedded_image = np.array(DeepFace.represent(
-            img_path = f'/home/patrickwilliamson/{file}',
+            
+            img_path = img_path,
             model_name = 'Facenet512'
         ))
         output = file.split('.')[0].split('/')[-1]
