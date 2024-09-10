@@ -21,7 +21,7 @@ def download_files(bucket_name, file_list):
 
     for file in file_list:
         blob = bucket.blob(file)
-        blob.download_to_filename(file)
+        blob.download_to_filename(f'/home/patrickwilliamson/{file}')
 
 def save_progress(chunk_index):
     with open('/home/patrickwilliamson/progress.txt', 'w') as file:
