@@ -1,23 +1,25 @@
 from helpers import list_files, download_files, save_progress, get_progess, load_images, embed_image
-from concurrent.futures import ThreadPoolExecutor
+from multiprocessing import Pool
 import os
 
-def embed_chunk(image_paths, index):
+def embed_chunk(image_paths):
     for image in image_paths:
-        #download_files('offender-images', image_paths)
+        # download_files('offender-images', image_paths)  # Commented out for clarity
         embed_image(image)
-    save_progress(index)
-    print(f'done with chunk {index}')
-        
+    
+    # We do not have the chunk index here, handle progress differently if needed
+    print(f'done with chunk containing {len(image_paths)} images')
+
 def main():
     image_paths = load_images('/home/patrickwilliamson/tmp/images')
     chunk_size = 25
-    with ThreadPoolExecutor(max_workers=3) as executor:
-        futures = [executor.submit(embed_chunk, image_paths[i:i+chunk_size], i//chunk_size) for i in range(0, 5000, chunk_size)]
 
-        for future in futures:
-            print(future.result())
+    # Split the image_paths list into chunks of chunk_size
+    chunks = [image_paths[i:i + chunk_size] for i in range(0, len(image_paths), chunk_size)]
+
+    # Create a process pool and map the chunks to be processed in parallel
+    with Pool(processes=3) as pool:  # Using 3 processes, similar to your thread count
+        pool.map(embed_chunk, chunks)
 
 if __name__ == '__main__':
     main()
-    #print(load_images('/home/patrickwilliamson/tmp/images')[0:5])
