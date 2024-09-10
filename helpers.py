@@ -3,6 +3,7 @@ from google.cloud import storage
 import pickle
 from deepface import DeepFace
 import numpy as np
+import glob
 
 def list_files(bucket_name):
     files = []
@@ -35,7 +36,13 @@ def get_progess():
         else:
             return int(chunk)
         
-def load_images():
+def load_images(folder_path=None):
+    if folder_path:
+        images = []
+        for file in glob.glob(folder_path):
+            file.append(images)
+        return images
+    
     with open('/home/patrickwilliamson/image_paths.pkl', 'rb') as f:
         return pickle.load(f)
 
