@@ -47,5 +47,6 @@ def embed_image(file, output_folder=''):
         ))
         output = file.split('.')[0].split('/')[-1]
         np.save(f'{output_folder}{output}.npy', embedded_image)
+        print(f'embedded {file}')
     except Exception as e:
         print(f'error while embedding image: {e}')
