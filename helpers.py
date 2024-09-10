@@ -40,7 +40,7 @@ def load_images(folder_path=None):
     if folder_path:
         images = []
         for file in glob.glob(folder_path):
-            file.append(images)
+            images.append(file)
         return images
     
     with open('/home/patrickwilliamson/image_paths.pkl', 'rb') as f:
