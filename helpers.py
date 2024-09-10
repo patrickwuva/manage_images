@@ -15,7 +15,7 @@ def list_files(bucket_name):
     return files
 
 def download_files(bucket_name, file_list):
-    destination_foler = 'home/patrickwilliamson/images'
+    destination_foler = '/home/patrickwilliamson/images'
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
 
@@ -24,7 +24,7 @@ def download_files(bucket_name, file_list):
         blob.download_to_filename(file)
 
 def save_progress(chunk_index):
-    with open('/home/patrickwilliamson/progress.pkl', 'w') as file:
+    with open('/home/patrickwilliamson/progress.txt', 'w') as file:
         file.write(chunk_index)
 
 def get_progess():
