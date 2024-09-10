@@ -16,7 +16,7 @@ def list_files(bucket_name):
     return files
 
 def download_files(bucket_name, file_list):
-    destination_foler = '/home/patrickwilliamson/images'
+    destination_foler = '/home/patrickwilliamson/images/*'
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
 
