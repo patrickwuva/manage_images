@@ -19,5 +19,5 @@ def main():
             print(future.result())
 
 if __name__ == '__main__':
-    #main()
-    print(load_images('/home/patrickwilliamson/tmp/images')[0:5])
+    main()
+    #print(load_images('/home/patrickwilliamson/tmp/images')[0:5])
