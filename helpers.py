@@ -1,6 +1,9 @@
 import os
 from google.cloud import storage
 import pickle
+from deepface import DeepFace
+import numpy as np
+
 def list_files(bucket_name):
     files = []
     client = storage.Client()
@@ -35,3 +38,14 @@ def get_progess():
 def load_images():
     with open('/home/patrickwilliamson/image_paths.pkl', 'rb') as f:
         return pickle.load(f)
+
+def embed_image(file, output_folder=''):
+    try:
+        embedded_image = np.array(DeepFace.represent(
+            img_path = file,
+            model_name = 'Facenet512'
+        ))
+        output = file.split('.')[0].split('/')[-1]
+        np.save(f'{output_folder}{output}.npy', embedded_image)
+    except Exception as e:
+        print(f'error while embedding image: {e}')
