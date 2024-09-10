@@ -1,3 +1,4 @@
+from helpers import load_images
 import os
 from multiprocessing import Pool
 
