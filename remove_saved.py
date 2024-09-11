@@ -12,7 +12,7 @@ def main():
     print(len(verified_e))
 
     for file in verified_e:
-        os.remove(f'{file}.{ending}')
-        
+        os.remove(f'/home/patrickwilliamson/tmp/images/{file}.{ending}')
+
 if __name__ == '__main__':
     main()
