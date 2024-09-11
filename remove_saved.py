@@ -8,3 +8,6 @@ def main():
     embedded = [i.split('.')[-1] for i in embedded]
     verified_e = [x for x in images if x in embedded]
     print(len(verified_e))
+
+if __name__ == '__main__':
+    main()
