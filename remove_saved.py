@@ -5,6 +5,7 @@ def main():
     embedded = glob.glob('/home/patrickwilliamson/embeddings/*')
     
     images = [i.split('.')[0].split('/')[-1] for i in images]
+    print(embedded[0])
     embedded = [i.split('.')[0].split('/')[-1] for i in embedded]
     print(images[0])
     print(embedded[0])
