@@ -6,6 +6,8 @@ def main():
     
     images = [i.split('.')[-1].split('/')[-1] for i in images]
     embedded = [i.split('.')[-1].split('/')[-1] for i in embedded]
+    print(images[0])
+    print(embedded[0])
     verified_e = [x for x in images if x in embedded]
     print(len(verified_e))
 
