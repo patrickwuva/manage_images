@@ -34,7 +34,7 @@ def main():
     image_paths = load_images('/home/patrickwilliamson/tmp/images')
     chunk_size = batch_size * num_gpus 
     total_images = len(image_paths)
-
+    
     for i in range(0, total_images, chunk_size):
         batch = image_paths[i:i + chunk_size] 
         batches_per_gpu = np.array_split(batch, num_gpus) 
